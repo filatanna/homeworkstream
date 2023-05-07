@@ -14,8 +14,11 @@ public class DepartmentService  extends EmployeeService {
     private final EmployeeService employeeService;
 
     public DepartmentService(EmployeeService employeeService) {
+        super();
+
         this.employeeService = employeeService;
     }
+
 
 
 
@@ -36,7 +39,7 @@ public class DepartmentService  extends EmployeeService {
         return employeeService.list().stream()
                 .collect(Collectors.groupingBy(Employee ::getDepartment));
     }
-    public  List<Employee> printName(int department){
+    public  List<Employee> getName(int department){
         return employeeService.list().stream()
                 .filter(employee -> employee.getDepartment() == department)
                 .collect(Collectors.toList());

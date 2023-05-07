@@ -28,7 +28,7 @@ public class DepartmentController {
     }
     @GetMapping(value ="all", params = "departmentId")
     public  List<Employee> printName (@RequestParam("departmentId") int department) {
-        return departmentService.printName(department);
+        return departmentService.getName(department);
     }
     @GetMapping("all")
     public Map<Integer, List<Employee>> printNameByDepartment () {

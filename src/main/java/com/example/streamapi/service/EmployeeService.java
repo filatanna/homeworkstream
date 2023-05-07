@@ -14,17 +14,23 @@ import java.util.List;
 @Service
 public class EmployeeService {
     private  final List<Employee> EMPLOYEES = new ArrayList<>(3);
+    private ValidatorService validatorService;
 
-
+    public EmployeeService() {
+        this.validatorService = validatorService;
+    }
 
     @PostConstruct
      public void name(){
-         EMPLOYEES.add(new Employee("Андрей","Иванов",1, 20000));
+         EMPLOYEES.add(new Employee("андрей","иванов",1, 20000));
          EMPLOYEES.add(new Employee("Игорь","Петров", 2, 25000));
          EMPLOYEES.add(new Employee("Ирина","Сидорова", 1,30000));
      }
     public Employee add(String firstName, String lastName, int department, int salary){
-        Employee employees= new Employee(firstName, lastName, department, salary);
+        Employee employees= new Employee(validatorService.validateFirstName(firstName),
+                                         validatorService.validateLastName(lastName),
+                                         department,
+                                           salary);
         for (int i = 0; i < EMPLOYEES.size(); i++) {
             if (EMPLOYEES.get(i)==null){
              EMPLOYEES.set(i, new Employee(firstName, lastName, department, salary));
