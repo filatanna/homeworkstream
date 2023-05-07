@@ -1,6 +1,5 @@
 package com.example.streamapi;
 
-import org.graalvm.compiler.serviceprovider.ServiceProvider;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -11,17 +10,20 @@ import java.util.List;
 @Service
 public class EmployeeService {
     private  final List<Employee> EMPLOYEES = new ArrayList<>(3);
-@PostConstruct
+
+
+
+    @PostConstruct
      public void name(){
-         EMPLOYEES.add(new Employee("Андрей","Иванов"));
-         EMPLOYEES.add(new Employee("Игорь","Петров"));
-         EMPLOYEES.add(new Employee("Ирина","Сидорова"));
+         EMPLOYEES.add(new Employee("Андрей","Иванов",1, 20000));
+         EMPLOYEES.add(new Employee("Игорь","Петров", 2, 25000));
+         EMPLOYEES.add(new Employee("Ирина","Сидорова", 3,30000));
      }
-    public Employee add(String firstName, String lastName){
-        Employee employees= new Employee(firstName, lastName);
+    public Employee add(String firstName, String lastName, int department, int salary){
+        Employee employees= new Employee(firstName, lastName, department, salary);
         for (int i = 0; i < EMPLOYEES.size(); i++) {
             if (EMPLOYEES.get(i)==null){
-             EMPLOYEES.set(i, new Employee(firstName, lastName));
+             EMPLOYEES.set(i, new Employee(firstName, lastName, department, salary));
              return  EMPLOYEES.get(i);
             }
             else if (EMPLOYEES.get(i) != null  ) {
@@ -31,8 +33,8 @@ public class EmployeeService {
         throw new EmployeeStorageIsFullException();
 
     }
-    public Employee find(String firstName, String lastName){
-        Employee employees= new Employee(firstName, lastName);
+    public Employee find(String firstName, String lastName, int department, int salary){
+        Employee employees= new Employee(firstName, lastName, department, salary);
         for (int i = 0; i < EMPLOYEES.size(); i++) {
             if (EMPLOYEES.contains(employees)){
                 return employees;
@@ -40,8 +42,9 @@ public class EmployeeService {
         }
         throw new EmployeeNotFoundException();
     }
-    public Employee remove(String firstName, String lastName){
-        Employee employees= new Employee(firstName, lastName);
+    public Employee remove(String firstName, String lastName, int department, int salary){
+
+        Employee employees= new Employee(firstName, lastName, department,salary);
         for (int i = 0; i < EMPLOYEES.size(); i++) {
             if (EMPLOYEES.remove(employees)){
                 return employees;
