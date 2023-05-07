@@ -1,5 +1,9 @@
-package com.example.streamapi;
+package com.example.streamapi.service;
 
+import com.example.streamapi.Employee;
+import com.example.streamapi.exception.EmployeeAlreadyAddedException;
+import com.example.streamapi.exception.EmployeeNotFoundException;
+import com.example.streamapi.exception.EmployeeStorageIsFullException;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -17,7 +21,7 @@ public class EmployeeService {
      public void name(){
          EMPLOYEES.add(new Employee("Андрей","Иванов",1, 20000));
          EMPLOYEES.add(new Employee("Игорь","Петров", 2, 25000));
-         EMPLOYEES.add(new Employee("Ирина","Сидорова", 3,30000));
+         EMPLOYEES.add(new Employee("Ирина","Сидорова", 1,30000));
      }
     public Employee add(String firstName, String lastName, int department, int salary){
         Employee employees= new Employee(firstName, lastName, department, salary);

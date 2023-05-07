@@ -1,5 +1,7 @@
-package com.example.streamapi;
+package com.example.streamapi.controller;
 
+import com.example.streamapi.Employee;
+import com.example.streamapi.service.EmployeeService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
