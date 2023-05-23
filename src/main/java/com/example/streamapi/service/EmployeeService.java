@@ -13,11 +13,11 @@ import java.util.List;
 
 @Service
 public class EmployeeService {
-    private  final List<Employee> EMPLOYEES = new ArrayList<>(3);
+    private  final List<Employee> EMPLOYEES = new ArrayList<>(4);
     private ValidatorService validatorService;
 
-    public EmployeeService() {
-        this.validatorService = validatorService;
+    public EmployeeService(ValidatorService validatorService) {
+        this.validatorService = this.validatorService;
     }
 
     @PostConstruct
@@ -27,7 +27,7 @@ public class EmployeeService {
          EMPLOYEES.add(new Employee("Ирина","Сидорова", 1,30000));
      }
     public Employee add(String firstName, String lastName, int department, int salary){
-        Employee employees= new Employee(validatorService.validateFirstName(firstName),
+        Employee employee = new Employee(validatorService.validateFirstName(firstName),
                                          validatorService.validateLastName(lastName),
                                          department,
                                            salary);

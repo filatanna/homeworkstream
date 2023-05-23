@@ -14,7 +14,7 @@ public class DepartmentService  extends EmployeeService {
     private final EmployeeService employeeService;
 
     public DepartmentService(EmployeeService employeeService) {
-        super();
+        super(new ValidatorService());
 
         this.employeeService = employeeService;
     }
